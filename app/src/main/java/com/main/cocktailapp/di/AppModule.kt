@@ -2,6 +2,7 @@ package com.main.cocktailapp.di
 
 import android.app.Application
 import androidx.room.Room
+import com.main.cocktailapp.BuildConfig
 import com.main.cocktailapp.core.util.Constants
 import com.main.cocktailapp.data.local.remote.CocktailsApi
 import com.main.cocktailapp.data.local.remote.DrinkDatabase
@@ -12,6 +13,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -26,6 +29,18 @@ object AppModule {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
+            .client(
+                OkHttpClient().newBuilder().apply {
+                    addInterceptor(
+                        Interceptor { chain ->
+                            val builder = chain.request().newBuilder()
+                            builder.header("X-RapidAPI-Key", BuildConfig.RAPID_API_KEY)
+                            builder.header("X-RapidAPI-Host", BuildConfig.RAPID_API_HOST)
+                            return@Interceptor chain.proceed(builder.build())
+                        }
+                    )
+                }.build()
+            )
             .build()
             .create(CocktailsApi::class.java)
     }

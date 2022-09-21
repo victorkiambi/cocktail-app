@@ -15,7 +15,7 @@ data class DrinkDto(
     val strGlass: String,
     val strIBA: String,
     val strImageAttribution: String,
-    val strImageSource: String,
+    val strImageSource: String?,
     val strIngredient1: String,
     val strIngredient10: String,
     val strIngredient11: String,
@@ -62,14 +62,33 @@ data class DrinkDto(
             strDrink = strDrink,
             strGlass = strGlass,
             strImageAttribution = strImageAttribution,
-            strImageSource = strImageSource,
             strIngredient1 = strIngredient1,
             strIngredient2 = strIngredient2,
             strIngredient3 = strIngredient3,
             strIngredient4 = strIngredient4,
             strIngredient5 = strIngredient5,
             strIngredient6 = strIngredient6,
-            strInstructions = strInstructions
+            strInstructions = strInstructions,
+            strDrinkThumb = strDrinkThumb
+        )
+    }
+
+    fun toDrink(): Drink {
+        return Drink(
+            idDrink = idDrink,
+            strAlcoholic = strAlcoholic,
+            strCategory = strCategory,
+            strDrink = strDrink,
+            strGlass = strGlass,
+            strImageAttribution = strImageAttribution,
+            strIngredient1 = strIngredient1,
+            strIngredient2 = strIngredient2,
+            strIngredient3 = strIngredient3,
+            strIngredient4 = strIngredient4,
+            strIngredient5 = strIngredient5,
+            strIngredient6 = strIngredient6,
+            strInstructions = strInstructions,
+            strDrinkThumb = strDrinkThumb
         )
     }
 }

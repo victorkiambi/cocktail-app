@@ -12,14 +12,15 @@ data class DrinkEntity(
     val strDrink: String,
     val strGlass: String,
     val strImageAttribution: String,
-    val strImageSource: String,
     val strIngredient1: String,
     val strIngredient2: String,
     val strIngredient3: String,
     val strIngredient4: String,
     val strIngredient5: String,
     val strIngredient6: String,
-    val strInstructions: String
+    val strInstructions: String,
+    val strDrinkThumb: String
+
 ){
     fun toDrink(): Drink {
         return Drink(
@@ -29,14 +30,15 @@ data class DrinkEntity(
             strDrink = strDrink,
             strGlass = strGlass,
             strImageAttribution = strImageAttribution,
-            strImageSource = strImageSource,
             strIngredient1 = strIngredient1,
             strIngredient2 = strIngredient2,
             strIngredient3 = strIngredient3,
             strIngredient4 = strIngredient4,
             strIngredient5 = strIngredient5,
             strIngredient6 = strIngredient6,
-            strInstructions = strInstructions
+            strInstructions = strInstructions,
+            strDrinkThumb = strDrinkThumb
+
         )
     }
 }
