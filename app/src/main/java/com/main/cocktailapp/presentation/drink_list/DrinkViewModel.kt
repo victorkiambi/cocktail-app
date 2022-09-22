@@ -1,4 +1,4 @@
-package com.main.cocktailapp.presentation
+package com.main.cocktailapp.presentation.drink_list
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.main.cocktailapp.core.util.Resource
 import com.main.cocktailapp.domain.use_case.GetDrinksUseCase
+import com.main.cocktailapp.presentation.DrinkState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
